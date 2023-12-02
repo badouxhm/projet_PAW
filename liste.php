@@ -8,6 +8,11 @@
 </head>
 <body class="bg-slate-500">
     <div>
+        <div >
+            <a href="accueille.html">
+                <img src="house-64.ico" alt="La page d'accueille" >
+            </a>
+        </div>
         <form method="get" action="" class="m-10">   
            
             <div class="relative">
@@ -34,25 +39,7 @@
             </thead>
             <tbody class="text-center bg-zinc-300">
                  <?php      
-                    try{
-                        $connexion = new PDO("mysql:host=localhost;dbname=isil","root","8520");
-                        $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                        $sql="SELECT * FROM students";
-                        $liste = $connexion->query($sql);
-
-                        foreach ($liste as $valeur ) {
-                            echo "<tr>";
-                            for($i=0;$i<5;$i++) {
-                            echo "<td> $valeur[$i]  </td>";                                
-                            }
-                            echo "</tr>";
-                            
-                    }
-                    }   
-                    catch(PDOException $e){
-                        echo ('ERROR :'.$e->getMessage());
-                    }
+                    
                 ?>
             </tbody>
           </table>
