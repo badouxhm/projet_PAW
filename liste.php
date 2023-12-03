@@ -28,18 +28,36 @@
     </div>
     <div class="flex justify-center">
         <table class="w-full table-auto border-collapse border-slate-950  m-10 my-0 rounded-lg shadow-md overflow-hidden" >
-            <thead>
+            <thead class="text-zinc-400 bg-slate-950">
                 <tr>
-                <th class="text-zinc-400 bg-slate-950">ID</th>
-                <th class="text-zinc-400 bg-slate-950">Nom</th>
-                <th class="text-zinc-400 bg-slate-950">Prénom</th>
-                <th class="text-zinc-400 bg-slate-950">E-mail</th>
-                <th class="text-zinc-400 bg-slate-950">Groupe</th>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Groupe</th>
               </tr>
             </thead>
             <tbody class="text-center bg-zinc-300">
                  <?php      
-                    
+                    try{
+                        $connexion = new PDO("mysql:host=localhost;dbname=isil","root","8520");
+                        $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        $sql="SELECT * FROM students";
+                        $liste = $connexion->query($sql);
+
+                        foreach ($liste as $valeur) {
+                            echo "<tr>";
+                            for($i=0;$i<5;$i++) {
+                            echo "<td> $valeur[$i]  </td>";                                
+                            }
+                            echo "</tr>";
+                            
+                    }
+                    }   
+                    catch(PDOException $e){
+                        echo ('ERROR :'.$e->getMessage());
+                    }
                 ?>
             </tbody>
           </table>
