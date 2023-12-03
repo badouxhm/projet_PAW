@@ -10,15 +10,15 @@
     <input type="hidden" name="AjoutE">
     <div class="mb-4">
         <label for="nom" class="block text-zinc-400 font-bold mb-2">Nom :</label>
-        <input type="text" id="nom" name="nom" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+        <input type="text" id="nom" name="nom" required placeholder="Entrez votre nom" class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
       </div>
       <div class="mb-4">
           <label for="prenom" class="block text-zinc-400 font-bold mb-2">Prénom :</label>
-          <input type="text" id="prenom" name="prenom" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+          <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
       </div>
       <div class="mb-4">
         <label for="email" class="block text-zinc-400 font-bold mb-2">Email :</label>
-        <input type="email" id="email" name="email" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+        <input type="email" id="email" name="email" placeholder="Entrez votre E-mail" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
       </div>
       <div class="mb-4">
         <label for="groupe" class="block text-zinc-400 font-bold mb-2">Groupe :</label>
