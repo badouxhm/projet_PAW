@@ -6,10 +6,10 @@
     <title>Liste des etudiants</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-t from-gray-100 to-gray-400  font-roboto p-4 h-full">
+<body class="bg-gradient-to-t from-gray-100 to-gray-400  font-roboto p-4 h-screen">
     <h1 class="h-14 text-slate-700 text-6xl  font-roboto font-extrabold text-center pt-8 mb-4">Liste des étudiants </h1>
     <div>
-        <form method="get" action="listeE.php" class="m-10">   
+        <form method="get" action="listeRecherche.php" class="m-10">   
            
             <div class="relative mt-4">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -17,7 +17,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input type="search" id="search" placeholder="Nom, Prénom ou E-mail" class="block w-full p-4 ps-10 text-sm rounded-lg text-slate-50 placeholder-slate-25/20 bg-slate-700"  required>
+                <input type="search" name="s" placeholder="Nom, Prénom ou E-mail" class="block w-full p-4 ps-10 text-sm rounded-lg text-slate-50 placeholder-slate-25/20 bg-slate-700"  required>
                 <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-slate-900 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 shadow-lg shadow-slate-500/50">Chercher</button>
             </div>
         </form>
@@ -36,11 +36,29 @@
             <tbody class="text-center text-slate-800 bg-slate-300">
                
                  <?php
-                    include_once("connexionBDD.class.php");
-                    $c = new Database;
-                    $c->__construct(); 
-                    $searchTerm = isset($_GET['search']) ? $_GET['search'] : null;
-                    $c->getStudents($searchTerm);
+                     try{
+                        $connexion = new PDO("mysql:host=localhost;dbname=isil","root","8520");
+                        $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        $sql="SELECT * FROM students";
+                        if (isset($_GET['s'])){
+                            $rech=$_GET['s'];
+                            $sql="SELECT * FROM students WHERE nom LIKE '%".$rech."%'";
+                        }
+                        $liste = $connexion->query($sql);
+
+                        foreach ($liste as $valeur) {
+                            echo "<tr>";
+                            for($i=0;$i<5;$i++) {
+                            echo "<td> $valeur[$i]  </td>";                                
+                            }
+                            echo "</tr>";
+                            
+                    }
+                    }   
+                    catch(PDOException $e){
+                        echo ('ERROR :'.$e->getMessage());
+                    }
                 ?>
             </tbody>
           </table>
