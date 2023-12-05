@@ -8,7 +8,7 @@
 
     <title>Gestion des recours</title>
 </head>
-    <body class="bg-gradient-to-t from-gray-100 to-gray-400  font-roboto p-4 h-full ">
+    <body class="bg-gradient-to-t from-gray-100 to-gray-400  font-roboto p-4 min-h-screen ">
         <nav class=" p-4 m-0 item-center">
             <div class="lg:inline-flex lg:inline-flex lg:w-auto  lg:mt-0 item-center" >
                 <ul class ="flex lg:flex-row ">
@@ -56,9 +56,10 @@
                             <label for="ids"><strong>ID étudiant :</strong> <?php echo $liste_r[0][1]; ?></label><br>
                             <label for="module"><strong>Module :</strong> <?php echo $liste_r[0][2]; ?></label><br>
                             <label for="nature"><strong>Nature :</strong> <?php echo $liste_r[0][3]; ?></label><br>
-                            <label for="noteA"><strong>Note affichée : </strong><?php echo $liste_r[0][4]; ?></label><br>
-                            <label for="noteR"><strong>Note réelle :</stong> <?php echo $liste_r[0][5]; ?></label><br>
+                            <label for="noteA"><strong>Note affichée : </strong> <?php echo $liste_r[0][4]; ?></label><br>
+                            <label for="noteR"><strong>Note réelle :</strong> <?php echo $liste_r[0][5]; ?></label><br>
                         </div>
+                        <br>
                         <div>
                             <ul class="items-center w-full text-sm font-medium text-gray-900 bg-slate-700   rounded-lg sm:flex ">
                                 <li class="w-full ">
@@ -73,6 +74,7 @@
                                         <label for="bordered-radio-2" class="text-sm font-medium text-slate-50">Défavorable</label>
                                     </div>
                                 </li>
+                                <button type="submit" class="shadow-lg shadow-slate-500/50 bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md flex justify-center">Enregistrer</button>
                             </ul>
                         </div>
 

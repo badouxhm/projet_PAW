@@ -48,26 +48,9 @@
                 <label for="NoteR" class="block text-zinc-50 font-bold mb-2">Note réelle :</label>
                 <input type="number" id="NoteR" name="NoteR" placeholder="Note réel (example : 18)" required class="p-1 w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
             </div>
-            <div id="message" class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md">
-                                Votre recours a été enregistré avec succès 
-                                <button onclick="fermerMessage()" class="float-right focus:outline-none">X</button>
-                        </div>
-
-                        <script>
-                                
-                                function afficherMessage() {
-                                    document.getElementById('message').classList.remove('hidden');
-                                }
-
-                            
-                                function fermerMessage() {
-                                    document.getElementById('message').classList.add('hidden');
-                                }
-                        </script>
-
-                        <div class="flex justify-center">
-                                <button type="submit" onclick="afficherMessage()" class="shadow-lg shadow-slate-500/50 bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md flex justify-center">Enregistrer</button>
-                        </div>
+            <div class="flex justify-center">
+                <button type="submit" name="envoyer" class=" shadow-lg shadow-slate-500/50 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded-md">Envoyer</button>
+            </div>
         </form>
   
     </body>

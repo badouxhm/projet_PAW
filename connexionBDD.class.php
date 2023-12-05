@@ -96,13 +96,13 @@ class Database
         }
     }
 
-    public function getStudents($searchTerm = null)
+    public function getStudents($searchTerm )
     {
         try {
             $sql = "SELECT * FROM students";
 
             if ($searchTerm !== null) {
-                $sql = "SELECT * FROM students WHERE nom LIKE :searchTerm";
+                $sql = "SELECT * FROM students WHERE nom LIKE :searchTerm OR prenom LIKE :searchTerm OR email LIKE :searchTerm";
                 $query = $this->connexion->prepare($sql);
                 $query->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
                 $query->execute();
