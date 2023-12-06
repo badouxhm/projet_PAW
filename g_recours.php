@@ -19,7 +19,7 @@
                                     <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
                                 </svg>
                             </button>
-                            Page d'accuil 
+                            Page d'accueil
                         </a>
                     </li>
                 </ul>
@@ -35,25 +35,27 @@
                     <?php
                     include_once("connexionBDD.class.php");
                     $c = new Database();
-                    $c -> __construct();
-                    $c->getPendingRecours();
+                    $c -> connect();
+                    $c->afficherRecoursNonGerer();
                     ?>
                 </select>
                 <div class="flex justify-center">
                     <button type="submit" class="shadow-lg shadow-slate-500/50 bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md flex justify-center">Envoyer</button>
                 </div>
-                
-
-                        <?php
+        
+                    <?php
                            if (isset($_GET['id'])) {
                             $idS = $_GET['id'];
-                            $liste_r = $c->getRecoursById($idS);
+                            $liste_r = $c->afficherRecoursById($idS);
                         ?>
                          <fieldset class="mt-6">
-                            <legend class="text-lg font-semibold text-center">Informations sur le recours</legend>
+                            <div class="flex justify-center ">
+                            <legend class="text-lg font-semibold text-center">Informations sur le recours :</legend>
+                            </div>
+                        
                         <div>
                            
-                            <label for="ids"><strong>ID étudiant :</strong> <?php echo $liste_r[0][1]; ?></label><br>
+                            <label for="ids"><strong>Matricule étudiant :</strong> <?php echo $liste_r[0][1]; ?></label><br>
                             <label for="module"><strong>Module :</strong> <?php echo $liste_r[0][2]; ?></label><br>
                             <label for="nature"><strong>Nature :</strong> <?php echo $liste_r[0][3]; ?></label><br>
                             <label for="noteA"><strong>Note affichée : </strong> <?php echo $liste_r[0][4]; ?></label><br>
@@ -86,7 +88,7 @@
                         $idS = $_GET['id'];
                         $decision = $_GET['decision'];
                         $c->updateRecoursStatus($idS, $decision);
-                    }
+                       }
                     }
                     ?>
                 </fieldset>

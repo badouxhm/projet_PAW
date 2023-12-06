@@ -17,7 +17,7 @@
                                     <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
                                 </svg>
                             </button>
-                             Page d'accuil 
+                            Page d'accueil
                         </a>
                      </li>
                 </ul>
@@ -36,8 +36,8 @@
             <div class="mb-4">
                 <label for="nature" class="block text-zinc-50 font-bold mb-2">Nature :</label>
                 <select class="w-1/3 h-8 rounded-md p-1" name="nature" id="nature" required>
-                    <option value="cc">CC</option>
-                    <option value="exam">Examen</option>
+                  <option value="cc">CC</option>
+                  <option value="exam">Examen</option>
                 </select>
             </div>
             <div class="mb-4">
@@ -52,19 +52,19 @@
                 <button type="submit" name="envoyer" class=" shadow-lg shadow-slate-500/50 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded-md">Envoyer</button>
             </div>
         </form>
-  
     </body>
 </html>
 <?php
   include_once("connexionBDD.class.php");
   $c = new Database();
-  $c -> __construct();
+  $c -> connect();
   if (isset($_POST['envoyer'])) { 
     $id = $_POST['idE'];
     $module = $_POST['module'];
     $nature = $_POST['nature'];
     $noteA = $_POST['NoteA'];
     $noteR = $_POST['NoteR'];
-    $c->insertRecours($id, $module, $nature, $noteA, $noteR);
+    $c->insererRecours($id, $module, $nature, $noteA, $noteR);
+    
   }
 ?>

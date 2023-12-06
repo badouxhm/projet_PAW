@@ -8,7 +8,7 @@ class Database
     private $dbname = "isil";
     private $connexion;
 
-    public function __construct()
+    public function connect()
     {
         try {
             $this->connexion = new PDO("mysql:host=$this->server;dbname=$this->dbname", $this->login, $this->pass);
@@ -18,7 +18,7 @@ class Database
         }
     }
 
-    public function insertStudent($nom, $prenom, $email, $groupe)
+    public function insererEtudiant($nom, $prenom, $email, $groupe)
     {
         try {
             if (isset($_POST['envoyer'])) {
@@ -35,7 +35,7 @@ class Database
         }
     }
 
-    public function insertRecours($id, $module, $nature, $noteA, $noteR)
+    public function insererRecours($id, $module, $nature, $noteA, $noteR)
     {
         try {
             if (isset($_POST['envoyer'])) {
@@ -55,7 +55,7 @@ class Database
         }
     }
 
-    public function getPendingRecours()
+    public function afficherRecoursNonGerer()
     {
         try {
             $sql = "SELECT id FROM recours WHERE status=:nbr";
@@ -71,7 +71,7 @@ class Database
             echo 'Echec : ' . $e->getMessage();
         }
     }
-    public function getRecoursById($idS){
+    public function afficherRecoursById($idS){
         try {
             $sql = "SELECT * FROM recours WHERE id=:id";
             $query = $this->connexion->prepare($sql);
@@ -96,7 +96,7 @@ class Database
         }
     }
 
-    public function getStudents($searchTerm )
+    public function afficherEtudiants($searchTerm )
     {
         try {
             $sql = "SELECT * FROM students";
@@ -125,7 +125,7 @@ class Database
     }
 
 
-    public function displayRecours()
+    public function afficherRecours()
     {
         try {
             $sql = "SELECT * FROM recours";
